@@ -1,41 +1,17 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-
-import { useSelector, useDispatch } from "react-redux";
+import Typography from "@material-ui/core/Typography";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { incrementCounter } from "../redux_store/actions";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(0, 1),
-    fontFamily: "Roboto",
-  },
-  card: {
-    flex: 1,
-    textAlign: "right",
-    justifyContent: "flex-end",
-  },
   button: {
     padding: theme.spacing(1, 5),
     textAlign: "center",
-  },
-  bottom: {
-    textAlign: "center",
-    flex: 1,
-    padding: theme.spacing(100, 0),
-    justifyContent: "flex-end",
-    marginBottom: 56,
-  },
-
-  counter: {
-    textAlign: "center",
-    padding: theme.spacing(0, 0),
   },
 }));
 
@@ -45,22 +21,34 @@ export default function Profile() {
   const dispatch = useDispatch();
 
   return (
-    <Box className={classes.root}>
-      <Grid container spacing={1} className={classes.card}>
-        <Grid item>
-          <Typography variant="h6">Hi Martin </Typography>
-          <Typography variant="caption">AMCP Corp</Typography>
-        </Grid>
-        <Grid item>
+    <Box
+      py={2}
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+      height="100%"
+    >
+      <Box>
+        <Box
+          px={3}
+          pb={2}
+          justifyContent="flex-end"
+          display="flex"
+          alignItems="center"
+        >
+          <Box pr={2} textAlign="right">
+            <Typography variant="h6">Hi Martin </Typography>
+            <Typography variant="caption">AMCP Corp</Typography>
+          </Box>
           <Avatar variant="rounded"></Avatar>
-        </Grid>
-      </Grid>
+        </Box>
 
-      <Divider />
-      <Box className={classes.counter}>
-        <Typography>Redux Clicks Counter: {clickCount}</Typography>
+        <Divider />
+        <Box my={2} textAlign="center">
+          <Typography>Redux Clicks Counter: {clickCount}</Typography>
+        </Box>
       </Box>
-      <Box className={classes.bottom}>
+      <Box mx="auto" mb={3}>
         <Button
           className={classes.button}
           variant="contained"
